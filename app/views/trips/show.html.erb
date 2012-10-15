@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Number of passengers:</b>
+  <%= @trip.number_of_passengers %>
+</p>
+
+<p>
+  <b>Leaving from:</b>
+  <%= @trip.leaving_from %>
+</p>
+
+<p>
+  <b>Traveling to:</b>
+  <%= @trip.traveling_to %>
+</p>
+
+<p>
+  <b>Outbound date:</b>
+  <%= @trip.outbound_date %>
+</p>
+
+<p>
+  <b>Return date:</b>
+  <%= @trip.return_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_trip_path(@trip) %> |
+<%= link_to 'Back', trips_path %>

@@ -1,0 +1,30 @@
+.container {
+	color:navy;
+	background-color:white;
+	width: 550px;
+	margin-top: 100px;
+	margin-left: 50px;
+}
+.form-horizontal .control-group {
+    margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-botton: 10px;
+}
+.form-horizontal .controls {
+    margin-left: 10px;
+}
+#f { 
+	width: 150px
+}
+#numpass {	
+	width: 50px
+}
+h1 {
+	font-family:Verdana,Arial,sans-serif;
+}	
+body{
+	color: yellow;
+	background-color: navy;
+	text-align:center;
+}

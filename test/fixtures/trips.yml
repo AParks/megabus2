@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number_of_passengers: MyString
+  leaving_from: MyString
+  traveling_to: MyString
+  outbound_date: 2012-10-14
+  return_date: 2012-10-14
+
+two:
+  number_of_passengers: MyString
+  leaving_from: MyString
+  traveling_to: MyString
+  outbound_date: 2012-10-14
+  return_date: 2012-10-14
