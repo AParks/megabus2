@@ -1,4 +1,8 @@
 class TripsController < ApplicationController
+before_filter do
+        @cities = City.all
+  end
+
   # GET /trips
   # GET /trips.json
   def index
@@ -25,7 +29,6 @@ class TripsController < ApplicationController
   # GET /trips/new.json
   def new
     @trip = Trip.new
-	@cities = City.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,14 +39,13 @@ class TripsController < ApplicationController
   # GET /trips/1/edit
   def edit
     @trip = Trip.find(params[:id])
-	@cities = City.all
   end
 
   # POST /trips
   # POST /trips.json
   def create
     @trip = Trip.new(params[:trip])
-
+	
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }

@@ -15,8 +15,8 @@
 <% @trips.each do |trip| %>
   <tr>
     <td><%= trip.number_of_passengers %></td>
-    <td><%= trip.leaving_from %></td>
-    <td><%= trip.traveling_to %></td>
+    <td><%= trip.leaving_from.name %></td>
+    <td><%= trip.traveling_to.name%></td>
     <td><%= trip.outbound_date %></td>
     <td><%= trip.return_date %></td>
     <td><%= link_to 'Show', trip %></td>
