@@ -11,7 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121024043802) do
+ActiveRecord::Schema.define(:version => 20121029024008) do
+
+  create_table "authorizations", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "buses", :force => true do |t|
+    t.decimal  "price"
+    t.time     "leave_time"
+    t.time     "arrival_time"
+    t.integer  "cities_id"
+    t.integer  "trips_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "buses", ["cities_id"], :name => "index_buses_on_cities_id"
+  add_index "buses", ["trips_id"], :name => "index_buses_on_trips_id"
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -35,6 +56,13 @@ ActiveRecord::Schema.define(:version => 20121024043802) do
     t.date     "return_date"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

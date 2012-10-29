@@ -1,4 +1,12 @@
 Railstest::Application.routes.draw do
+#  get "sessions/new"
+
+#  get "sessions/create"
+
+#  get "sessions/failure"
+
+  resources :buses
+
   resources :routes
 
   resources :cities
@@ -12,6 +20,10 @@ Railstest::Application.routes.draw do
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
+  get   '/login', :to => 'sessions#new', :as => :login
+  get  '/logout', :to => 'sessions#destroy'
+  match '/auth/:provider/callback', :to => 'sessions#create'
+  match '/auth/failure', :to => 'sessions#failure'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

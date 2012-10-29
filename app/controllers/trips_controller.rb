@@ -29,7 +29,9 @@ before_filter do
   # GET /trips/new.json
   def new
     @trip = Trip.new
+	
 
+	
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @trip }
@@ -45,6 +47,7 @@ before_filter do
   # POST /trips.json
   def create
     @trip = Trip.new(params[:trip])
+	#@trip.route
 	
     respond_to do |format|
       if @trip.save

@@ -30,7 +30,8 @@ group :assets do
 end
 
 gem 'validates_timeliness', '~> 3.0'
-
+gem "bootstrap-datepicker-rails", "~> 0.6.24"
+gem 'omniauth-facebook'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

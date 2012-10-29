@@ -4,6 +4,7 @@ class Trip < ActiveRecord::Base
   belongs_to :leaving_from, :class_name => "City"  
   belongs_to :traveling_to, :class_name => "City"
   
+  #has_many :cities, :through => buses 
   validates_date :outbound_date, :on => :create, :on_or_after => :today
   validates_date :outbound_date, :on => :create, :on_or_before => :return_date
 

@@ -9,11 +9,11 @@ class Route
   
   def self.multipoint_routes
     { 
-      ["Pittsburgh", "Baltimore"]   => ["Pittsburgh", "Philadelphia", "Baltimore"],
-      ["Philadelphia", "Albany"] => ["Philadelphia", "New York", "Albany"],
-	  ["Boston", "Albany"] => ["Boston", "New York", "Albany"],
-	  ["Pittsburgh", "Albany"] => ["Pittsburgh", "New York", "Albany"],
-	  ["Baltimore", "Albany"] => ["Baltimore", "New York", "Albany"]
+      ["Pittsburgh, PA", "Baltimore, MD"]   => ["Pittsburgh, PA", "Philadelphia, PA", "Baltimore, MD"],
+      ["Philadelphia,PA", "Albany,NY"] => ["Philadelphia, PA", "New York, NY", "Albany, NY"],
+	  ["Boston, MA", "Albany, NY"] => ["Boston, MA", "New York, NY", "Albany, NY"],
+	  ["Pittsburgh, PA", "Albany, NY"] => ["Pittsburgh, PA", "New York", "Albany, NY"],
+	  ["Baltimore, MD", "Albany, NY"] => ["Baltimore, MA", "New York, NY", "Albany,NY"]
 	  
     }
   end
