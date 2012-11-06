@@ -19,18 +19,29 @@
     <%= f.label :leave_time %><br />
     <%= f.time_select :leave_time %>
   </div>
+  
   <div class="field">
     <%= f.label :arrival_time %><br />
     <%= f.time_select :arrival_time %>
   </div>
+  
+  
+  
+ <div class="control-group">    
   <div class="field">
-    <%= f.label :cities %><br />
-    <%= f.text_field :cities %>
+    <%= f.label :leaving_from_id, class: 'control-label' %><br />
+	 <div class="controls">
+	 	 <%= f.collection_select :leaving_from_id, @cities, :id, :name %>
   </div>
+</div> 
+ 
+<div class="control-group">  
   <div class="field">
-    <%= f.label :trips %><br />
-    <%= f.text_field :trips %>
+    <%= f.label :traveling_to_id, class: 'control-label' %><br />
+	<div class="controls">
+	 <%= f.collection_select :traveling_to_id, @cities, :id, :name %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

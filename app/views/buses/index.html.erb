@@ -5,8 +5,8 @@
     <th>Price</th>
     <th>Leave time</th>
     <th>Arrival time</th>
-    <th>Cities</th>
-    <th>Trips</th>
+    <th>Leaving From</th>
+    <th>Arriving At</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,8 +17,8 @@
     <td><%= bus.price %></td>
     <td><%= bus.leave_time %></td>
     <td><%= bus.arrival_time %></td>
-    <td><%= bus.cities %></td>
-    <td><%= bus.trips %></td>
+	<td><%= bus.leaving_from.name %></td>
+    <td><%= bus.traveling_to.name%></td>
     <td><%= link_to 'Show', bus %></td>
     <td><%= link_to 'Edit', edit_bus_path(bus) %></td>
     <td><%= link_to 'Destroy', bus, confirm: 'Are you sure?', method: :delete %></td>

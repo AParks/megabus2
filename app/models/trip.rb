@@ -4,12 +4,11 @@ class Trip < ActiveRecord::Base
   belongs_to :leaving_from, :class_name => "City"  
   belongs_to :traveling_to, :class_name => "City"
   
-  #has_many :cities, :through => buses 
+  has_many :buses 
   validates_date :outbound_date, :on => :create, :on_or_after => :today
   validates_date :outbound_date, :on => :create, :on_or_before => :return_date
 
-  validates :number_of_passengers, presence: true
-  
+  validates :number_of_passengers, presence: true 
   validate :cannot_have_same_start_end
 
   def cannot_have_same_start_end

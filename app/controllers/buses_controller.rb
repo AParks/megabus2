@@ -1,4 +1,8 @@
 class BusesController < ApplicationController
+
+before_filter do
+        @cities = City.order('name');
+  end
   # GET /buses
   # GET /buses.json
   def index
@@ -14,6 +18,7 @@ class BusesController < ApplicationController
   # GET /buses/1.json
   def show
     @bus = Bus.find(params[:id])
+
 
     respond_to do |format|
       format.html # show.html.erb

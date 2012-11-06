@@ -1,4 +1,9 @@
 class Bus < ActiveRecord::Base
-  belongs_to :cities
-  belongs_to :trips
+
+belongs_to :trip
+ belongs_to :leaving_from, :class_name => "City"  
+  belongs_to :traveling_to, :class_name => "City"
+
+scope :cheap, order('price desc').limit(1)  
+ 
 end

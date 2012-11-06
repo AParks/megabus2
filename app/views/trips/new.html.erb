@@ -5,10 +5,13 @@
 <%= link_to 'Back', trips_path %>
 <%= link_to 'Cities', cities_path %>
 
-
+<div id="user_nav">
 <% if current_user %>
   Welcome <%= current_user.name %>!
   <%= link_to "Sign Out", logout_path %>
 <% else %>
   <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+  </div>
+  
+  
 <% end %>

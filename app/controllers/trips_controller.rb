@@ -1,7 +1,8 @@
 class TripsController < ApplicationController
 before_filter do
-        @cities = City.all
+        @cities = City.order('name');
   end
+  
 
   # GET /trips
   # GET /trips.json
@@ -47,7 +48,7 @@ before_filter do
   # POST /trips.json
   def create
     @trip = Trip.new(params[:trip])
-	#@trip.route
+	@trip.route
 	
     respond_to do |format|
       if @trip.save
