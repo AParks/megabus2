@@ -7,6 +7,10 @@ class Route
     @points.reverse
   end
   
+  def points
+	@points
+	end
+  
   def self.multipoint_routes
     { 
       ["Pittsburgh, PA", "Baltimore, MD"]   => ["Pittsburgh, PA", "Philadelphia, PA", "Baltimore, MD"],

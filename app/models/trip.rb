@@ -18,6 +18,7 @@ class Trip < ActiveRecord::Base
 	end
   end
   
+  
     
   def route
     points = [leaving_from.name, traveling_to.name]

@@ -2,11 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
 
-before_filter :cheap_buses
+#before_filter :cheap_buses
 
-def cheap_buses
-	@cheap = buses.cheap
-end
+#def cheap_buses
+#	@cheap = buses.cheap
+#end
   
   
 private

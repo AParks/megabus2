@@ -6,7 +6,7 @@ before_filter do
   # GET /buses
   # GET /buses.json
   def index
-    @buses = Bus.all
+    @buses = Bus.cheap
 
     respond_to do |format|
       format.html # index.html.erb

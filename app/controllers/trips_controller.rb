@@ -48,7 +48,12 @@ before_filter do
   # POST /trips.json
   def create
     @trip = Trip.new(params[:trip])
-	@trip.route
+	@route = @trip.route
+	@route.points.each do |x|
+		unless @trip.leaving_from == x
+			Bus.find_by_leaving_from_and_traveling_to  x , x
+		end
+	end
 	
     respond_to do |format|
       if @trip.save
