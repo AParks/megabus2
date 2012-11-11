@@ -6,13 +6,25 @@ before_filter do
   # GET /buses
   # GET /buses.json
   def index
-    @buses = Bus.cheap
+    @buses = Bus.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @buses }
     end
   end
+  
+  # GET /buses/cheap
+  # GET /buses/cheap.json
+  def cheap
+	@buses = Bus.cheap
+
+    respond_to do |format|
+      format.html # cheap.html.erb
+      format.json { render json: @buses }
+    end
+  end
+	
 
   # GET /buses/1
   # GET /buses/1.json
@@ -39,7 +51,7 @@ before_filter do
 
   # GET /buses/1/edit
   def edit
-    @bus = Bus.find(params[:id])
+    @bus = Bus.find(params[:id])		
   end
 
   # POST /buses
@@ -60,7 +72,7 @@ before_filter do
 
   # PUT /buses/1
   # PUT /buses/1.json
-  def update
+  def update	  
     @bus = Bus.find(params[:id])
 
     respond_to do |format|

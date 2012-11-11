@@ -5,7 +5,13 @@ Railstest::Application.routes.draw do
 
 #  get "sessions/failure"
 
-  resources :buses
+ # resources :buses
+       resources :buses do	   
+       collection do
+         get 'cheap'
+       end
+
+     end
 
   resources :routes
 
@@ -34,16 +40,7 @@ Railstest::Application.routes.draw do
   #   resources :products
 
   # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+
 
   # Sample resource route with sub-resources:
   #   resources :products do
