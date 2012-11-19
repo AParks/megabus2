@@ -11,7 +11,6 @@
  *= require_self
  *= require_tree .
 */
-*= require bootstrap-datepicker
 #display{
     padding: 10px
 }
@@ -20,4 +19,4 @@
 }
 #help{
     padding: 10px
-}?
+}
