@@ -14,3 +14,19 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
+
+$(function() {
+    var $helpbutton= $("#helpbutton");
+    var $help= $("#help");
+    $help.hide();
+    $helpbutton.click(function() {
+        if($helpbutton.attr('value') == 'Help'){                   
+            $help.show("slide", { direction: "up" },1000);
+            $(this).attr('value', 'Hide');
+        }
+        else{
+            $(this).attr('value', 'Help');
+            $help.hide("slide", { direction: "up" }, 1000);
+        }          
+    });
+});
