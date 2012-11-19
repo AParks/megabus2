@@ -17,7 +17,11 @@ Railstest::Application.routes.draw do
 
   resources :cities
 
-  resources :trips
+  resources :trips do
+	member do
+		resources :buses, controller: "trip_buses"
+	end
+  end
 
   get "welcome/index"
 

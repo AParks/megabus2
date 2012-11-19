@@ -10,7 +10,26 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require bootstrap-datepicker
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
-//= require bootstrap-datepicker
+
+$(function() {
+    var $helpbutton= $("#helpbutton");
+    var $help= $("#help");
+    $help.hide();
+    $helpbutton.click(function() {
+        if($helpbutton.attr('value') == 'Help'){                   
+            $help.show("slide", { direction: "up" },1000);
+            $(this).attr('value', 'Hide');
+        }
+        else{
+            $(this).attr('value', 'Help');
+            $help.hide("slide", { direction: "up" }, 1000);
+        }          
+    });
+    
+});
+

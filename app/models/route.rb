@@ -15,10 +15,9 @@ class Route
     { 
       ["Pittsburgh, PA", "Baltimore, MD"]   => ["Pittsburgh, PA", "Philadelphia, PA", "Baltimore, MD"],
       ["Philadelphia,PA", "Albany,NY"] => ["Philadelphia, PA", "New York, NY", "Albany, NY"],
-	  ["Boston, MA", "Albany, NY"] => ["Boston, MA", "New York, NY", "Albany, NY"],
-	  ["Pittsburgh, PA", "Albany, NY"] => ["Pittsburgh, PA", "New York", "Albany, NY"],
-	  ["Baltimore, MD", "Albany, NY"] => ["Baltimore, MA", "New York, NY", "Albany,NY"]
-	  
+      ["Boston, MA", "Albany, NY"] => ["Boston, MA", "New York, NY", "Albany, NY"],
+      ["Pittsburgh, PA", "Albany, NY"] => ["Pittsburgh, PA", "New York", "Albany, NY"],
+      ["Baltimore, MD", "Albany, NY"] => ["Baltimore, MA", "New York, NY", "Albany,NY"]	  
     }
   end
   

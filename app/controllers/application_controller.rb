@@ -1,18 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
   helper_method :current_user
 
-#before_filter :cheap_buses
+  private
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
 
-#def cheap_buses
-#	@cheap = buses.cheap
-#end
-  
-  
-private
-
-def current_user
-  @current_user ||= User.find(session[:user_id]) if session[:user_id]
-end
-  
 end

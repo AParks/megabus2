@@ -1,8 +1,7 @@
 class TripsController < ApplicationController
-before_filter do
-        @cities = City.order('name');
+  before_filter do
+    @cities = City.order('name');
   end
-  
 
   # GET /trips
   # GET /trips.json
@@ -30,9 +29,7 @@ before_filter do
   # GET /trips/new.json
   def new
     @trip = Trip.new
-	
 
-	
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @trip }
@@ -48,13 +45,13 @@ before_filter do
   # POST /trips.json
   def create
     @trip = Trip.new(params[:trip])
-	#@route = @trip.route
-	#@route.points.each do |x|
-	#	unless @trip.leaving_from == x
-	#		Bus.find_by_leaving_from_and_traveling_to  x , x
-	#	end
-	#end
-	
+    @route = @trip.route
+    #@route.points.each do |x|
+    #  unless @trip.leaving_from == x
+    #    Bus.find_by_leaving_from_and_traveling_to  x , x
+    #  end
+    #end
+
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
