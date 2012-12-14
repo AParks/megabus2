@@ -5,31 +5,31 @@ Railstest::Application.routes.draw do
 
 #  get "sessions/failure"
 
- # resources :buses
-       resources :buses do	   
-       collection do
-         get 'cheap'
-       end
+# resources :buses
+  resources :buses do
+    collection do
+      get 'cheap'
+    end
 
-     end
+  end
 
   resources :routes
 
   resources :cities
 
   resources :trips do
-	member do
-		resources :buses, controller: "trip_buses"
-	end
+    member do
+      resources :buses, controller: "trip_buses", :as => "trip_buses"
+    end
   end
 
-  get "welcome/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
+  get '/trips/:id/buses(.:format)', :to => 'trip_buses#index'
   get   '/login', :to => 'sessions#new', :as => :login
   get  '/logout', :to => 'sessions#destroy'
   match '/auth/:provider/callback', :to => 'sessions#create'
@@ -44,7 +44,6 @@ Railstest::Application.routes.draw do
   #   resources :products
 
   # Sample resource route with options:
-
 
   # Sample resource route with sub-resources:
   #   resources :products do
@@ -71,9 +70,9 @@ Railstest::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'trips#new'
 
-  # See how all your routes lay out with "rake routes"
+# See how all your routes lay out with "rake routes"
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+# This is a legacy wild controller route that's not recommended for RESTful applications.
+# Note: This route will make all actions in every controller accessible via GET requests.
+# match ':controller(/:action(/:id))(.:format)'
 end

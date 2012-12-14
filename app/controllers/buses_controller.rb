@@ -59,6 +59,7 @@ before_filter do
   def create
     @bus = Bus.new(params[:bus])
 
+    
     respond_to do |format|
       if @bus.save
         format.html { redirect_to @bus, notice: 'Bus was successfully created.' }

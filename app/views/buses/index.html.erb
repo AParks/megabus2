@@ -1,4 +1,4 @@
-<h1>Listing buses</h1>
+<h1>Possible Buses</h1>
 
 <table>
   <tr>
@@ -19,9 +19,6 @@
     <td><%= bus.arrival_time %></td>
 	<td><%= bus.leaving_from.name %></td>
     <td><%= bus.traveling_to.name%></td>
-    <td><%= link_to 'Show', bus %></td>
-    <td><%= link_to 'Edit', edit_bus_path(bus) %></td>
-    <td><%= link_to 'Destroy', bus, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
