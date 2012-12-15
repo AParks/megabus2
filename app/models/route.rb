@@ -25,7 +25,10 @@ class Route
   end
   
   def self.multipoint_routes
-    { 
+    {
+      ["Baltimore, MD", "Amherst, MA"]   => ["Baltimore, MD", "New York, NY", "Amherst, MA"],
+      ["Boston, MA", "Amherst, MA"]   => ["Boston, MA", "New York, NY", "Amherst, MA"],
+      ["Pittsburgh, PA", "Amherst, MA"] => ["Pittsburgh, PA", "New York, NY", "Amherst, MA"],
       ["Pittsburgh, PA", "Baltimore, MD"]   => ["Pittsburgh, PA", "Philadelphia, PA", "Baltimore, MD"],
       ["Pittsburgh, PA", "Boston, MA"]   => ["Pittsburgh, PA", "Philadelphia, PA", "Boston, MA"],
       ["Philadelphia, PA", "Cleveland, OH"] => ["Philadelphia, PA", "Pittsburgh, PA", "Cleveland, OH"],
@@ -35,7 +38,11 @@ class Route
       ["Boston, MA", "Albany, NY"] => ["Boston, MA", "New York, NY", "Albany, NY"],
       ["Pittsburgh, PA", "Albany, NY"] => ["Pittsburgh, PA", "New York", "Albany, NY"],
       ["Baltimore, MD", "Albany, NY"] => ["Baltimore, MA", "New York, NY", "Albany,NY"],
-      ["Cleveland, OH", "Albany, NY"] => ["Cleveland, OH", "Pittsburgh, PA", "New York, NY", "Albany, NY"]   	  
+      ["Cleveland, OH", "Albany, NY"] => ["Cleveland, OH", "New York, NY", "Albany, NY"],
+      ["Cleveland, OH", "Boston, MA"] => ["Cleveland, OH", "New York, NY", "Amherst, MA"]   ,
+      ["Cleveland, OH", "Amherst, MA"] => ["Cleveland, OH", "New York, NY", "Amherst, MA"]     
+     
+   	  
     }
   end
   
