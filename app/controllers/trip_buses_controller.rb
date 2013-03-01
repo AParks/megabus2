@@ -4,10 +4,10 @@ class TripBusesController < ApplicationController
     @trip = Trip.find(params[:id])
     rowCount = (Bus.all).length
     @journeys = Array.new
-    (1..4).each do |i|
-      sql_journey_results = journeysOfLength i , @trip[:leaving_from_id], @trip[:traveling_to_id]
-      @journeys = getBusesFromJourneysOfLength i, sql_journey_results 
-      #@journeys.push *journeys
+    (1..10).each do |i|
+      @sql_journey_results = journeysOfLength i , @trip[:leaving_from_id], @trip[:traveling_to_id]
+      journeys = getBusesFromJourneysOfLength i, @sql_journey_results 
+      @journeys.push *journeys
     end
 
     render "index"
@@ -40,9 +40,9 @@ class TripBusesController < ApplicationController
     where = where + " AND b#{i}.traveling_to_id='#{traveling_to_id}'"
     sql = select.chomp(',') + from.chomp(',') + where.chomp('AND')
   
-    ActiveRecord::Base.connection.execute("DROP VIEW Journey")
     ActiveRecord::Base.connection.execute("CREATE VIEW Journey AS " + sql)
     sql_journey_results = ActiveRecord::Base.connection.execute("Select * FROM Journey ")
+    ActiveRecord::Base.connection.execute("DROP VIEW Journey")
 
 
 

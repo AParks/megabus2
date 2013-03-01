@@ -9,7 +9,6 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'rspec-rails'
 	gem 'capybara'
-	gem 'debugger'
 end
 
 group :production do
@@ -27,12 +26,13 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier'
+  gem 'jquery-ui-rails'
+
 end
 
 gem 'validates_timeliness'
 gem 'omniauth-facebook'
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 
 
 # To use ActiveModel has_secure_password

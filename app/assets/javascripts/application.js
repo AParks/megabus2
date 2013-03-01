@@ -12,10 +12,30 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery_ui
+//= require jquery-ui
 //= require_tree .
 
 
 $(function() {
-   $('#trip_return_date').datepicker()
+
+
+ 	$("#trip_return_date").datepicker({ dateFormat: "yy-mm-dd" });
+	$("#trip_outbound_date").datepicker({ dateFormat: "yy-mm-dd" });
+
+
+
+	var $helpbutton= $("#helpbutton");
+	var $help= $("#help");
+	$help.hide();
+	$helpbutton.click(function() {
+
+	    if($helpbutton.attr('value') == 'Help'){                   
+		    $help.show("slide", { direction: "up" },1000);
+		    $(this).attr('value', 'Hide');
+		}
+		else{
+		    $(this).attr('value', 'Help');
+		    $help.hide("slide", { direction: "up" }, 1000);
+		}          
+	});
 });

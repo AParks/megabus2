@@ -1,67 +1,64 @@
+<%@errors = false %>
 <%= form_for(@trip, html: { class: 'form-horizontal' } ) do |f| %>
 <% if @trip.errors.any? %>
-<div id="error_explanation">
-	<h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
-
-	<ul>
-		<% @trip.errors.full_messages.each do |msg| %>
-		<li>
-			<%= msg %>
-		</li>
-		<% end %>
-	</ul>
-</div>
+	<%@errors = false%>
 <% end %>
 
-<div class="control-group">
-	<div class="field">
-		<%= f.label :number_of_passengers,
-		class: 'control-label'	%>
-		<br />
-		<div class="controls">
+<form class="form-horizontal">
+	<div class="line">
+	<div class="control-group">
+			<%= f.label :number_of_passengers, class: 'control-label'	%>
+			<div class="controls">
 			<%= f.number_field :number_of_passengers, :min => 1 , :value => 1 %>
+			</div>
+	</div>
+</div>
+
+
+	<div class="control-group">
+			<%= f.label :leaving_from_id, class: 'control-label' %>
+		<div class="controls">
+			<%= f.collection_select :leaving_from_id, @cities, :id, :name %>
 		</div>
 	</div>
 
 	<div class="control-group">
-		<div class="field">
-			<%= f.label :leaving_from_id, class: 'control-label' %>
-			<br />
-			<div class="controls">
-				<%= f.collection_select :leaving_from_id, @cities, :id, :name %>
-			</div>
+		<%= f.label :traveling_to_id, class: 'control-label' %>
+		<div class="controls">
+			<%= f.collection_select :traveling_to_id, @cities, :id, :name %>
 		</div>
+	</div> 
 
-		<div class="control-group">
-			<div class="field">
-				<%= f.label :traveling_to_id, class: 'control-label' %>
-				<br />
-				<div class="controls">
-					<%= f.collection_select :traveling_to_id, @cities, :id, :name %>
-				</div>
+		<% if @errors %>
+			<div class="control-group error">
+			<%= f.label :outbound_date, class: 'control-label', for: 'inputError' %>
+			<div class="controls">
+				<%= f.text_field :outbound_date, id: 'inputError'%>	
+				<span class="help-inline">Please correct the error</span>
+			</div>
 
-				<div class="control-group">
-					<div class="field">
-						<%= f.label :outbound_date, class: 'control-label' %>
-						<br />
-						<div class="controls">
-							<%= f.date_select :outbound_date, :start_year =>Time.now.year %>
-						</div>
-					</div>
+		<%else	%>
+			<div class="control-group">
+			<%= f.label :outbound_date, class: 'control-label' %>
+			<div class="controls">
+			 <%= f.text_field :outbound_date %>	
+			</div>
+		<% end %>
+	</div>
 
-					<div class="control-group">
-					<div class="field">
-						<%= f.label :return_date, class: 'control-label' %>
-						<br />
-						<div class="controls">
-							<%= f.text_field :return_date, :id =>"trip_return_date" %>
-						</div>
-					</div>
+	<div class="control-group">
+		<%= f.label :return_date, class: 'control-label' %>
+		<div class="controls">
+	 		<%= f.text_field :return_date%>	
+		</div>
+	</div>
 
 			
 
-						<div class="form-actions">
-							<%= f.submit %>
-						</div>
-						<% end %>
+	<div class="form-actions">
+		<%= f.submit class: 'btn'%>
+	</div>
+</form>
+
+<% end %>
 
