@@ -49,10 +49,9 @@ class TripsController < ApplicationController
  
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
-        format.json { render json: @trip, status: :created, location: @trip }
+        redirect_to :controller => 'trip_buses' , :action => 'index',:id => @trip[:id]
       else
-        format.html { render action: "new" }
+        format.html { render action: "new" }  
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end

@@ -1,0 +1,42 @@
+<h1>Possible Buses</h1>
+
+Leaving From: <%= @trip.leaving_from.name %>
+<br/>
+Arriving At: <%= @trip.traveling_to.name %>
+
+
+
+<% @journeys.each do |journey| %>
+
+<table class="table">  
+  <thead>  
+    <tr>
+      <th>Price</th>
+      <th>Leave time</th>
+      <th>Arrival time</th>
+      <th>Leaving From</th>
+      <th>Arriving At</th>
+    </thead>  
+    
+    <tbody>  
+      </tr>
+      <% journey.each do |bus| %>
+        <tr>
+          <td><%= bus.price %></td>
+          <td><%= bus.leave_time %></td>
+          <td><%= bus.arrival_time %></td>
+          <td><%= bus.leaving_from.name %></td>
+          <td><%= bus.traveling_to.name%></td>
+        </tr>
+      <% end %>
+    </tbody>  
+
+</table>
+<% end %>
+
+
+<br />
+
+<%= link_to 'New Bus', new_bus_path %>
+<%= link_to 'Cheap Buses', cheap_buses_path %>
+

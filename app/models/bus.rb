@@ -1,8 +1,9 @@
 class Bus < ActiveRecord::Base
 
-belongs_to :trip
+  attr_accessible :leaving_from, :traveling_to, :leave_time, :arrival_time, :price 
+
  belongs_to :leaving_from, :class_name => "City"  
-  belongs_to :traveling_to, :class_name => "City"
+ belongs_to :traveling_to, :class_name => "City"
 
 scope :cheap, order('price asc').limit(1)  
  

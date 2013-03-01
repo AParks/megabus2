@@ -29,7 +29,7 @@ Railstest::Application.routes.draw do
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
-  get '/trips/:id/buses(.:format)', :to => 'trip_buses#index'
+  #get '/trips/:id/buses(.:format)', :to => 'trip_buses#index'
   get   '/login', :to => 'sessions#new', :as => :login
   get  '/logout', :to => 'sessions#destroy'
   match '/auth/:provider/callback', :to => 'sessions#create'

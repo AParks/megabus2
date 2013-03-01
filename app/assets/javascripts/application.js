@@ -11,25 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
+//= require jquery_ui
 //= require_tree .
 
 
 $(function() {
-	 $( "#trip_return_date" ).datepicker();
-
-	 var $helpbutton= $("#helpbutton");
-	    var $help= $("#help");
-	    $help.hide();
-	    $helpbutton.click(function() {
-	        if($helpbutton.attr('value') == 'Help'){                   
-	            $help.show("slide", { direction: "up" },1000);
-	            $(this).attr('value', 'Hide');
-	        }
-	        else{
-	            $(this).attr('value', 'Help');
-	            $help.hide("slide", { direction: "up" }, 1000);
-	        }          
-	    });
+   $('#trip_return_date').datepicker()
 });

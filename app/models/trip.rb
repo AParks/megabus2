@@ -1,5 +1,5 @@
 class Trip < ActiveRecord::Base
-  attr_accessible :number_of_passengers, :leaving_from_id, :leaving_from, :traveling_to, :traveling_to_id, :outbound_date, :return_date
+  attr_accessible :number_of_passengers, :leaving_from, :leaving_from_id, :traveling_to, :traveling_to_id, :outbound_date, :return_date, :total_price
 
   belongs_to :leaving_from, :class_name => "City"
   belongs_to :traveling_to, :class_name => "City"
@@ -17,16 +17,6 @@ class Trip < ActiveRecord::Base
     end
   end
 
-  def route
-    points = [leaving_from.name, traveling_to.name]
 
-    if multipoints = Route.multipoint_routes[points]
-      Route.new(multipoints)
-    elsif multipoints = Route.multipoint_routes[points.reverse]
-      Route.new(multipoints.reverse)
-    else
-      Route.new(points)
-    end
-  end
 
 end
