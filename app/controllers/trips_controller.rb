@@ -45,12 +45,11 @@ class TripsController < ApplicationController
   # POST /trips.json
   def create
     @trip = Trip.new(params[:trip])
- 
- 
-    respond_to do |format|
-      if @trip.save
-        redirect_to :controller => 'trip_buses' , :action => 'index',:id => @trip[:id]
-      else
+    
+   if @trip.save
+      redirect_to :controller => 'trip_buses' , :action => 'index',:id => @trip[:id]
+    else
+      respond_to do |format|
         format.html { render action: "new" }  
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end

@@ -1,52 +1,61 @@
-<h1>Possible Buses</h1>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <p>
+          <label for="amount">Price range:</label>
+          <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+      </p>
+      <div id="slider-range"></div>
+    </div>
+    <div class="span10">
 
-Leaving From: <%= @trip.leaving_from.name %>
-<br/>
-Arriving At: <%= @trip.traveling_to.name %>
+      
+      <% if @journeys.empty? %>
+        <p> 
+          Sorry, there are no routes from 
+          <%= @trip.leaving_from.name %> to <%= @trip.traveling_to.name %>.
+        <p>
+      <% else %>
+      <h1>Possible Routes</h1>
 
+        Leaving From: <%= @trip.leaving_from.name %>
+        <br/>
+        Arriving At: <%= @trip.traveling_to.name %>
 
-
-
-  <% @journeys.each do |journey| %>
-
- 
-<table class="table">  
-  <thead>  
-    <tr>
-      <th>Price</th>
-      <th>Leave time</th>
-      <th>Arrival time</th>
-      <th>Leaving From</th>
-      <th>Arriving At</th>
-    </thead>  
-    
-    <tbody>
-      <% (journey["info"]).each do |bus_leg| %>
-        <tr>         
-          <td><%= bus_leg.price %></td>
-          <td><%= bus_leg.leave_time %></td>
-          <td><%= bus_leg.arrival_time %></td>
-          <td><%= bus_leg.leaving_from.name %></td>
-          <td><%= bus_leg.traveling_to.name%></td>
-
-        </tr>
+        <% @journeys.each do |journey| %>
+          <table class="table">  
+            <thead>  
+              <tr>
+                <th>Price</th>
+                <th>Leave time</th>
+                <th>Arrival time</th>
+                <th>Leaving From</th>
+                <th>Arriving At</th>
+              </thead>  
+              
+              <tbody>
+                <% (journey["info"]).each do |bus_leg| %>
+                  <tr>         
+                    <td><%= bus_leg.price %></td>
+                    <td><%= bus_leg.leave_time %></td>
+                    <td><%= bus_leg.arrival_time %></td>
+                    <td><%= bus_leg.leaving_from.name %></td>
+                    <td><%= bus_leg.traveling_to.name%></td>
+                  </tr>
+                <% end %>
+                  <tr>
+                    <td>Total:<%= journey["price"] %></td>
+                    <td><%= journey["info"].first.leave_time %></td>
+                    <td><%= journey["info"].last.leave_time %></td>
+                    <td><%= @trip.leaving_from.name%></td>
+                    <td><%= @trip.traveling_to.name%></td>
+                  </tr>
+              </tbody>  
+          </table>
+        <% end %>
       <% end %>
-        <tr>
-          <td>Total:<%= journey["price"] %></td>
-          <td><%= journey["info"].first.leave_time %></td>
-          <td><%= journey["info"].last.leave_time %></td>
-          <td><%= @trip.leaving_from.name%></td>
-          <td><%= @trip.traveling_to.name%></td>
-        </tr>
-
-    </tbody>  
-
-</table>
-
-
-<% end %>
-
-
-
-<%= link_to 'New Bus', new_bus_path %>
-
+      <br>
+      <%= link_to 'See Trips', trips_path %>
+    </div>
+  </div>
+</div>

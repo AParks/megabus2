@@ -3,12 +3,12 @@ class TripBusesController < ApplicationController
     @trip = Trip.find(params[:id])
     rowCount = (Bus.all).length
     @journeys = Array.new
-    (1..4).each do |i|
+    (1..2).each do |i|
       @sql_journey_results = journeysOfLength i , @trip[:leaving_from_id], @trip[:traveling_to_id]
       getBusesFromJourneysOfLength i, @sql_journey_results 
     end
-
-    render "index"
+   
+  #  @paginated_journeys =  @journeys.page(params[:page]).per(5)
   end
 
 

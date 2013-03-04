@@ -34,6 +34,8 @@ gem 'validates_timeliness'
 gem 'omniauth-facebook'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'kaminari'
+
 
 
 # To use ActiveModel has_secure_password

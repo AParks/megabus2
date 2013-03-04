@@ -1,8 +1,12 @@
-.containerACP {
+
+body{
+	background-color: navy;
+	text-align:center;
+}
+.ACPContainer, .span2, .span10{
 	color:navy;
 	background-color:white;
-	width: 750px;
-	height: 105%;
+	width: 550px;
 	margin-top: 100px;
 	border-radius: 15px;
 	border-color: yellow;
@@ -11,7 +15,34 @@
 
 }
 
+.searchContainer {
+	width: 550px;
+	height: 700px;
+	overflow : auto;
+}
 
+.resultsContainer {
+	width: 800px;
+	height: 700px;
+	overflow : auto;
+}
+
+
+.ui-slider .ui-slider-horizontal { 
+	height: 2.9em !important; 
+	width: 2em !important;
+
+}
+.ui-slider .ui-slider-handle {
+  position: absolute;
+  z-index: 2;
+  width: 1em;
+  height: 1em;
+  cursor: default;
+}
+.row {
+	    margin:100px
+}
 .form-horizontal .control-group {
 	margin-left: 10px;
 	margin-right: 10px;
@@ -20,9 +51,4 @@
 }
 .form-horizontal .controls {
 	margin-left: 10px;
-}
-
-body{
-	background-color: navy;
-	text-align:center;
 }

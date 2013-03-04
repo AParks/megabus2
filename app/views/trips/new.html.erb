@@ -1,29 +1,29 @@
-<h1>Journey Planner</h1>
-<h6>plan your megabus trip right</h6>
+<div class="ACPContainer">
+	<h1>Journey Planner</h1>
+	<h6>plan your megabus trip right</h6>
 
-<%= render 'form' %>
+	<%= render 'form' %>
+	<%= link_to 'Back', trips_path %>
+	<%= link_to 'Cities', cities_path %>
 
-<%= link_to 'Back', trips_path %>
-<%= link_to 'Cities', cities_path %>
+	<!--<div id="user_nav">
+	<% if current_user %>
+	  Welcome <%= current_user.name %>!
+	  <%= link_to "Sign Out", logout_path %>
+	<% else %>
+	  <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+	  </div>
+	-->
 
-<!--This is a comment. Comments are not displayed in the browser
-	<div id="user_nav">
-<% if current_user %>
-  Welcome <%= current_user.name %>!
-  <%= link_to "Sign Out", logout_path %>
-<% else %>
-  <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-  </div>
--->
-
-  <button class="btn btn-small" type="button">Help</button>
+	<button class="btn btn-small" type="button">Help</button>
 
 
-<div id='help'>
-  Enter your trip details, and <br>
-  get a list of all possible (direct AND indirect) routes. 
-</div>  
+	<div id='help'>
+	  Enter your trip details, and <br>
+	  get a list of all possible (direct AND indirect) routes. 
+	</div>  
 
-</br>
+	</br>
 
-<% end %>
+	<% end %>
+</div>
