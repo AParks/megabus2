@@ -1,35 +1,33 @@
 <h1>Buses</h1>
 
 <table class="table">
-    <thead>  
+  <thead>  
+    <tr>
+      <th>ID</th>
+      <th>Price</th>
+      <th>Leave time</th>
+      <th>Arrival time</th>
+      <th>Leaving From</th>
+      <th>Arriving At</th>
+    </tr>
+  </thead>  
 
-  <tr>
-    <th>ID</th>
-    <th>Price</th>
-    <th>Leave time</th>
-    <th>Arrival time</th>
-    <th>Leaving From</th>
-    <th>Arriving At</th>
-  </tr>
-      </thead>  
-
-    <tbody>  
-<% @buses.each do |bus| %>
-  <tr>
-    <td><%= bus.id %></td>
-    <td><%= bus.price %></td>
-    <td><%= bus.leave_time %></td>
-    <td><%= bus.arrival_time %></td>
-	<td><%= bus.leaving_from.name %></td>
-    <td><%= bus.traveling_to.name%></td>
-  </tr>
-<% end %>
-    </tbody>  
+  <tbody>  
+  <% @buses.each do |bus| %>
+    <tr>
+      <td><%= bus.id %></td>
+      <td><%= bus.price %></td>
+      <td><%= bus.leave_time %></td>
+      <td><%= bus.arrival_time %></td>
+    	<td><%= bus.leaving_from.name %></td>
+      <td><%= bus.traveling_to.name%></td>
+    </tr>
+  <% end %>
+  </tbody>  
 
 </table>
 
 <br />
 
 <%= link_to 'New Bus', new_bus_path %>
-<%= link_to 'Cheap Buses', cheap_buses_path %>
 

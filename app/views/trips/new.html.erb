@@ -1,5 +1,5 @@
 <h1>Journey Planner</h1>
-<h5>plan your megabus trip right</h5>
+<h6>plan your megabus trip right</h6>
 
 <%= render 'form' %>
 
@@ -14,12 +14,16 @@
 <% else %>
   <%= link_to "Sign in with Facebook", "/auth/facebook" %>
   </div>
-  -->
-<input type='button' value='Help' id='helpbutton'>
-        
-        <div id='help'>
-            Enter your trip details, and <br>
-            get a list of all possible (direct AND indirect) routes. 
-        </div>  
-  
+-->
+
+  <button class="btn btn-small" type="button">Help</button>
+
+
+<div id='help'>
+  Enter your trip details, and <br>
+  get a list of all possible (direct AND indirect) routes. 
+</div>  
+
+</br>
+
 <% end %>

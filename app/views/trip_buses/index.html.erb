@@ -5,12 +5,11 @@ Leaving From: <%= @trip.leaving_from.name %>
 Arriving At: <%= @trip.traveling_to.name %>
 
 
-  @sql_journey_results
+
 
   <% @journeys.each do |journey| %>
 
-<% @journeys.each do |journey| %>
-
+ 
 <table class="table">  
   <thead>  
     <tr>
@@ -21,25 +20,33 @@ Arriving At: <%= @trip.traveling_to.name %>
       <th>Arriving At</th>
     </thead>  
     
-    <tbody>  
-      </tr>
-      <% journey.each do |bus| %>
-        <tr>
-          <td><%= bus.price %></td>
-          <td><%= bus.leave_time %></td>
-          <td><%= bus.arrival_time %></td>
-          <td><%= bus.leaving_from.name %></td>
-          <td><%= bus.traveling_to.name%></td>
+    <tbody>
+      <% (journey["info"]).each do |bus_leg| %>
+        <tr>         
+          <td><%= bus_leg.price %></td>
+          <td><%= bus_leg.leave_time %></td>
+          <td><%= bus_leg.arrival_time %></td>
+          <td><%= bus_leg.leaving_from.name %></td>
+          <td><%= bus_leg.traveling_to.name%></td>
+
         </tr>
       <% end %>
+        <tr>
+          <td>Total:<%= journey["price"] %></td>
+          <td><%= journey["info"].first.leave_time %></td>
+          <td><%= journey["info"].last.leave_time %></td>
+          <td><%= @trip.leaving_from.name%></td>
+          <td><%= @trip.traveling_to.name%></td>
+        </tr>
+
     </tbody>  
 
 </table>
+
+
 <% end %>
 
 
-<br />
 
 <%= link_to 'New Bus', new_bus_path %>
-<%= link_to 'Cheap Buses', cheap_buses_path %>
 

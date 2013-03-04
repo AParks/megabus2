@@ -19,8 +19,18 @@
 $(function() {
 
 
- 	$("#trip_return_date").datepicker({ dateFormat: "yy-mm-dd" });
-	$("#trip_outbound_date").datepicker({ dateFormat: "yy-mm-dd" });
+ 	$("#trip_outbound_date").datepicker({ 
+ 		dateFormat: "yy-mm-dd",
+ 		minDate: 0
+ 	});
+
+
+ 	$("#trip_return_date").datepicker({ 
+ 		dateFormat: "yy-mm-dd",
+ 		minDate: 0
+ 	});
+
+
 
 
 
