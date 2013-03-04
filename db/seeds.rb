@@ -6,7 +6,7 @@
 require 'csv'
 
 cities_array = Array.new
-CSV.foreach('/Users/parksa/Documents/code/megabus/db/cities.csv') do |row|
+CSV.foreach('cities.csv') do |row|
 	city_hash = Hash.new
 	city_hash[:name] = row[1]
 	city_hash[:address] = row[0]
