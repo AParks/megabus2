@@ -1,6 +1,5 @@
 defaults: &defaults
-  host: 127.0.0.1
-  port: 27017
+  
 
 development:
   <<: *defaults
@@ -9,10 +8,13 @@ development:
 test:
   <<: *defaults
   database: routes_test
+  host: 127.0.0.1
+  port: 27017
 
 # set these environment variables on your prod server
 production:
   <<: *defaults
   database: routes
+  uri: <%= ENV['MONGOHQ_URL'] %>
   username: <%= ENV['MONGO_USERNAME'] %>
   password: <%= ENV['MONGO_PASSWORD'] %>
