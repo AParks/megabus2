@@ -13,10 +13,7 @@ Railstest::Application.routes.draw do
 
   end
 
-  resources :routes
-
   resources :cities
-
   resources :trips do
     member do
       resources :buses, controller: "trip_buses", :as => "trip_buses"

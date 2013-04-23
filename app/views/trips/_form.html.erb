@@ -1,4 +1,20 @@
-<%= simple_form_for(@trip, html: { class: 'form-horizontal' } ) do |f| %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav pull-right">
+      <li class="active"><a href="/">Plan a new trip</a></li>
+      <li ><a href=<%= trips_path %>>Trips</a></li>
+      <li class="dropdown">
+        <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">View Network<b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+          <li><a tabindex="-1" href=<%= buses_path %>>Buses</a></li>
+          <li><a tabindex="-1" href=<%= cities_path %>>Cities</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="ACPContainer">
+<%= simple_form_for(@trip, html: { class: 'form-horizontal' }) do |f| %>
 <% if @trip.errors.any? %>
 	<div class="alert alert-error">
       <p><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</p>
@@ -72,3 +88,4 @@
 
 <% end %>
 
+</div>

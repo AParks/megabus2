@@ -1,6 +1,26 @@
-<div class="ACPContainer">
-
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav pull-right">
+      <li ><a href="/">Plan a new trip</a></li>
+      <li class="active"><a href=<%= trips_path %>>Trips</a></li>
+      <li class="dropdown">
+        <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">View Network<b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+          <li><a tabindex="-1" href=<%= buses_path %>>Buses</a></li>
+          <li><a tabindex="-1" href=<%= cities_path %>>Cities</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
 <p id="notice"><%= notice %></p>
+
+</div>
+<ul class="breadcrumb">
+  <li><a href=<%= trips_path %>>Trips</a> <span class="divider">/</span></li>
+  <li class="active">Trip Details</li> <span class="divider">/</span></li>
+  <li><a href=<%= trip_buses_path%>>Possible Routes</a></li>
+</ul>
 
 <p>
   <b>Number of passengers:</b>
@@ -26,11 +46,4 @@
   <b>Return date:</b>
   <%= @trip.return_date %>
 </p>
-
-
-<%= link_to 'Edit', edit_trip_path(@trip) %> |
-<%= link_to 'Buses', trip_buses_path %>
-
-
-<div>
 

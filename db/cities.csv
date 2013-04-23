@@ -1,124 +1,124 @@
-89,"Albany, NY"
-90,"Amherst, MA"
-91,"Ann Arbor, MI"
-93,"Binghamton, NY"
-94,"Boston, MA"
-95,"Buffalo, NY"
-96,"Burlington, VT"
-98,"Champaign, IL"
-99,"Charlotte, NC"
-100,"Chicago, IL"
-101,"Christiansburg, VA"
-102,"Cincinnati, OH"
-103,"Cleveland, OH"
-104,"Columbia, MO"
-105,"Columbus, OH"
-106,"Des Moines, IA"
-107,"Detroit, MI"
-109,"Frederick, MD"
-110,"Hampton, VA"
-111,"Harrisburg, PA"
-112,"Hartford, CT"
-115,"Indianapolis, IN"
-116,"Iowa City, IA"
-117,"Kansas City, MO"
-118,"Knoxville, TN"
-119,"Madison, WI"
-120,"Memphis, TN"
-121,"Milwaukee, WI"
-122,"New Haven, CT"
-123,"New York, NY"
-126,"Omaha, NE"
-127,"Philadelphia, PA"
-128,"Pittsburgh, PA"
-129,"Portland, ME"
-130,"Providence, RI"
-131,"Durham, NC"
-132,"Richmond, VA"
-133,"Ridgewood, NJ"
-134,"Rochester, NY"
-135,"Secaucus, NJ"
-136,"St Louis, MO"
-137,"State College, PA"
-138,"Storrs, CT"
-139,"Syracuse, NY"
-140,"Toledo, OH"
-142,"Washington, DC"
-143,"Baltimore, MD"
-144,"Minneapolis, MN"
-145,"Toronto, ON"
-273,"Buffalo Airport, NY"
-289,"Atlanta, GA"
-290,"Chattanooga, TN"
-291,"Nashville , TN"
-292,"Birmingham, AL"
-293,"Montgomery, AL"
-294,"Mobile, AL"
-295,"Jacksonville, FL"
-296,"Gainesville, FL"
-297,"Orlando, FL"
-298,"Louisville, KY"
-299,"Morgantown, WV"
-300,"Madison, U of Wisc, WI"
-301,"Saratoga Springs, NY"
-302,"Athens, GA"
-303,"New Orleans, LA"
-304,"Princeton, NJ"
-305,"New Brunswick, NJ"
-316,"Fairhaven, MA"
-317,"Dallas/Fort Worth, TX"
-318,"Houston, TX"
-320,"Austin, TX"
-321,"San Antonio, TX"
-322,"Norman, OK"
-323,"Oklahoma City, OK"
-324,"Little Rock, AR"
-325,"Galveston, TX"
-326,"Uvalde, TX"
-327,"Eagle Pass, TX"
-328,"Del Rio, TX"
-329,"San Angelo, TX"
-330,"East Lansing, MI"
-331,"Grand Rapids, MI"
-332,"Shreveport, LA"
-333,"La Grange, TX"
-334,"Humble, TX"
-335,"Brenham, TX"
-336,"Prairie View, TX"
-337,"La Marque, TX"
-362,"Kenton, OH"
-363,"Lima, OH"
-364,"Van Wert, OH"
-365,"Ft. Wayne, IN"
-366,"Angola, IN"
-367,"Elkhart, IN"
-368,"South Bend, IN"
-369,"Gary, IN"
-370,"Dayton-Trotwood, OH"
-371,"Richmond, IN"
-372,"Muncie, IN"
-373,"Columbia City, IN"
-374,"Warsaw, IN"
-375,"Plymouth, IN"
-376,"Valparaiso, IN"
-389,"Newark, DE"
-390,"Los Angeles, CA"
-391,"Abilene, TX"
-393,"Big Spring, TX"
-395,"Carthage, TX"
-397,"El Paso, TX"
-401,"Giddings, TX"
-402,"Livingston, TX"
-403,"Lubbock, TX"
-404,"Lufkin, TX"
-405,"Midland, TX"
-406,"Nacogdoches, TX"
-407,"Texarkana, AR"
-411,"Springfield, MO"
-412,"San Jose, CA"
-413,"Oakland, CA"
-414,"San Francisco, CA"
-415,"Sacramento, CA"
-416,"Riverside, CA"
-417,"Las Vegas, NV"
-419,"Sparks, NV"
+89 ,"Abilene, TX"
+90 ,"Albany, NY", 332, 372
+91 ,"Amherst, MA", 107, 145, 332
+93 ,"Angola, IN"
+94 ,"Ann Arbor, MI", 115, 118, 128, 332, 364, 405, 412
+95 ,"Athens, GA", 96
+96 ,"Atlanta, GA", 95, 102, 106, 110, 111, 112, 115, 117, 121, 122, 137, 292, 295, 300, 318, 323, 324, 328, 331, 362
+98 ,"Austin, TX", 104, 122, 273, 367, 389
+99 ,"Baltimore, MD", 103, 106, 143, 332, 333, 363, 371, 395, 413, 419
+100,"Big Spring, TX"
+101,"Binghamton, NY", 332
+102,"Birmingham, AL", 96, 110, 115, 122, 300, 318
+103,"Boston, MA", 96, 99, 107, 145, 330, 332, 363, 366, 395, 419
+104,"Brenham, TX", 98, 273, 367
+105,"Buffalo Airport, NY", 332, 413
+106,"Buffalo, NY", 96, 99, 112, 117, 121, 295, 332, 363, 413, 419
+107,"Burlington, VT", 91, 103, 145, 332, 393
+109,"Carthage, TX"
+110,"Champaign, IL", 96, 102, 115, 122, 300, 318, 411
+111,"Charlotte, NC", 96, 129, 332, 371, 419
+112,"Chattanooga, TN", 96, 106, 117, 121, 295, 328
+115,"Chicago, IL", 94, 96, 102, 110, 117, 118, 120, 121, 122, 127, 128, 131, 142, 290, 291, 293, 300, 303, 316, 317, 318, 321, 322, 328, 337, 404, 411, 412
+116,"Christiansburg, VA", 295, 332, 419
+117,"Cincinnati, OH", 96, 106, 112, 115, 121, 290, 295
+118,"Cleveland, OH", 96, 115, 128, 332, 364, 405, 412
+119,"Columbia City, IN"
+120,"Columbia, MO", 115, 293, 404
+121,"Columbus, OH", 96, 106, 112, 115, 117, 290, 295
+122,"Dallas/Fort Worth, TX", 96, 98, 102, 110, 115, 273, 300, 318, 334, 336, 389, 404, 411
+123,"Dayton-Trotwood, OH"
+126,"Del Rio, TX"
+127,"Des Moines, IA", 115, 291, 337
+128,"Detroit, MI", 94, 115, 118, 131, 142, 332, 364, 405, 412
+129,"Durham, NC", 111, 332, 371, 419
+130,"Eagle Pass, TX"
+131,"East Lansing, MI", 115, 128, 142
+132,"El Paso, TX"
+133,"Elkhart, IN"
+134,"Fairhaven, MA", 332, 369
+135,"Frederick, MD"
+136,"Ft. Wayne, IN"
+137,"Gainesville, FL", 96, 362
+138,"Galveston, TX"
+139,"Gary, IN"
+140,"Giddings, TX"
+142,"Grand Rapids, MI", 115, 128, 131
+143,"Hampton, VA", 99, 332, 333, 363, 371, 419
+144,"Harrisburg, PA", 363, 364, 405
+145,"Hartford, CT", 91, 103, 107, 330, 332, 406
+273,"Houston, TX", 98, 104, 122, 331, 367, 389
+289,"Humble, TX"
+290,"Indianapolis, IN", 115, 117, 121, 303, 328
+291,"Iowa City, IA", 115, 127, 337
+292,"Jacksonville, FL", 96, 362
+293,"Kansas City, MO", 115, 120, 404
+294,"Kenton, OH"
+295,"Knoxville, TN", 96, 106, 112, 116, 117, 121, 332, 419
+296,"La Grange, TX"
+297,"La Marque, TX"
+298,"Las Vegas, NV", 302, 373
+299,"Lima, OH"
+300,"Little Rock, AR", 96, 102, 110, 115, 122, 318
+301,"Livingston, TX"
+302,"Los Angeles, CA", 298, 335, 390, 391
+303,"Louisville, KY", 115, 290, 328
+304,"Lubbock, TX"
+305,"Lufkin, TX"
+316,"Madison, U of Wisc, WI", 115, 322
+317,"Madison, WI", 115, 322
+318,"Memphis, TN", 96, 102, 110, 115, 122, 300, 404, 411
+320,"Midland, TX"
+321,"Milwaukee, WI", 115, 322
+322,"Minneapolis, MN", 115, 316, 317, 321
+323,"Mobile, AL", 96, 324, 331
+324,"Montgomery, AL", 96, 323, 331
+325,"Morgantown, WV", 364, 419
+326,"Muncie, IN"
+327,"Nacogdoches, TX"
+328,"Nashville , TN", 96, 112, 115, 290, 303
+329,"New Brunswick, NJ", 332
+330,"New Haven, CT", 103, 145, 332
+331,"New Orleans, LA", 96, 273, 323, 324
+332,"New York, NY", 90, 91, 94, 99, 101, 103, 105, 106, 107, 111, 116, 118, 128, 129, 134, 143, 145, 295, 329, 330, 333, 363, 364, 368, 369, 371, 374, 393, 405, 406, 407, 412, 413, 419
+333,"Newark, DE", 99, 143, 332, 363, 371, 419
+334,"Norman, OK"
+335,"Oakland, CA", 302
+336,"Oklahoma City, OK"
+337,"Omaha, NE", 115, 127, 291
+362,"Orlando, FL", 96, 137, 292
+363,"Philadelphia, PA", 99, 103, 106, 143, 144, 332, 333, 364, 371, 395, 405, 413, 419
+364,"Pittsburgh, PA", 94, 118, 128, 144, 325, 332, 363, 405, 412, 419
+365,"Plymouth, IN"
+366,"Portland, ME", 103
+367,"Prairie View, TX", 98, 104, 273
+368,"Princeton, NJ", 332
+369,"Providence, RI", 134, 332
+370,"Reno, NV", 375, 390
+371,"Richmond, VA", 99, 111, 129, 143, 332, 333, 363, 419
+372,"Ridgewood, NJ", 90
+373,"Riverside, CA", 298
+374,"Rochester, NY", 332, 407
+375,"Sacramento, CA", 370, 390, 402
+376,"San Angelo, TX"
+389,"San Antonio, TX", 98, 122, 273
+390,"San Francisco, CA", 302, 370, 375, 402
+391,"San Jose, CA", 302
+393,"Saratoga Springs, NY", 107, 332
+395,"Secaucus, NJ", 99, 103, 363, 419
+397,"Shreveport, LA"
+401,"South Bend, IN"
+402,"Sparks, NV", 375, 390
+403,"Springfield, MO"
+404,"St Louis, MO", 115, 120, 293, 318
+405,"State College, PA", 94, 118, 128, 144, 332, 363, 364, 412
+406,"Storrs, CT", 145, 332
+407,"Syracuse, NY", 332, 374
+411,"Texarkana, AR", 110, 115, 122, 318
+412,"Toledo, OH", 94, 115, 118, 128, 332, 364, 405
+413,"Toronto, ON", 99, 105, 106, 332, 363, 419
+414,"Uvalde, TX"
+415,"Valparaiso, IN"
+416,"Van Wert, OH"
+417,"Warsaw, IN"
+419,"Washington, DC", 99, 103, 106, 111, 116, 129, 143, 295, 325, 332, 333, 363, 364, 371, 395, 413 

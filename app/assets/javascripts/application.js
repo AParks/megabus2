@@ -19,6 +19,7 @@
 $(function() {
 
 
+
  	$("#trip_outbound_date").datepicker({ 
  		dateFormat: "yy-mm-dd",
  		minDate: 0
@@ -30,6 +31,10 @@ $(function() {
  		minDate: 0
  	});
 
+    var originalPriceTotals = $(".route");
+    var parent = originalPriceTotals[0].parentNode;
+    originalPriceTotals = originalPriceTotals.toArray();
+
 	$( "#slider-range" ).slider({
     	range: true,
     	min: 0,
@@ -37,6 +42,17 @@ $(function() {
     	values: [ 0, 100 ],
       	slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        var priceTotals = originalPriceTotals;
+
+        for (var i = 0; i< priceTotals.length-1;i++){
+        	var price = priceTotals[i].getAttribute("value");
+        	if ( price < ui.values[ 0 ] || price > ui.values[ 1 ])
+        		priceTotals[i].remove();
+        	else if(originalPriceTotals.indexOf(priceTotals[i]) == -1){
+        		console.log("-1")
+        		parent.appendChild(priceTotals[i]);
+        	}
+        }
       }
     });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
@@ -44,19 +60,5 @@ $(function() {
 
 
 
-
-	var $helpbutton= $("#helpbutton");
-	var $help= $("#help");
-	$help.hide();
-	$helpbutton.click(function() {
-
-	    if($helpbutton.attr('value') == 'Help'){                   
-		    $help.show("slide", { direction: "up" },1000);
-		    $(this).attr('value', 'Hide');
-		}
-		else{
-		    $(this).attr('value', 'Help');
-		    $help.hide("slide", { direction: "up" }, 1000);
-		}          
-	});
 });
+

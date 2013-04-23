@@ -1,46 +1,55 @@
+ul.nav li.dropdown:hover ul.dropdown-menu{
+    display: block;    
+}
 
 body{
-	background-color: navy;
-	text-align:center;
+		height: 800px;
+
 }
-.ACPContainer, .span2, .span10{
-	color:navy;
-	background-color:white;
+
+#slider-range{
+	width: 70%;
+	margin: auto;
+	position: relative;
+	bottom: 10px;
+}
+#amount{
+	width: 50%;
+	text-align: center;
+	font-size: 70%;
+
+}
+.ACPContainer {
 	width: 550px;
-	margin-top: 100px;
+	margin-left: 30px;
+	margin-top: 50px;
 	border-radius: 15px;
-	border-color: yellow;
+	border-color: #e1f0f0;
 	border-style: solid;
 	border-width: 5px;
 	overflow : auto;
 }
 
+.span2, .span10{
+	margin: auto;
+	border-color: #e1f0f0;
+	color: #e8d069;
+	margin-bottom: 100px;
+
+}
+
 .searchContainer {
 	width: 550px;
-	height: 700px;
 }
 
 .resultsContainer {
 	width: 800px;
-	height: 700px;
 	overflow : auto;
-}
-
-
-.ui-slider .ui-slider-horizontal { 
-	height: 2.9em !important; 
-	width: 2em !important;
 
 }
-.ui-slider .ui-slider-handle {
-  position: absolute;
-  z-index: 2;
-  width: 1em;
-  height: 1em;
-  cursor: default;
-}
+
 .row {
-	    margin:100px
+	margin:100px
 }
 .form-horizontal .control-group {
 	margin-left: 10px;

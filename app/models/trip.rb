@@ -1,4 +1,5 @@
 class Trip < ActiveRecord::Base
+
   attr_accessible :number_of_passengers, :leaving_from, :leaving_from_id, :traveling_to, :traveling_to_id, :outbound_date, :return_date, :total_price
 
   belongs_to :leaving_from, :class_name => "City"
@@ -14,6 +15,7 @@ class Trip < ActiveRecord::Base
       errors.add(:traveling_to, "the same city  as your start city." )
     end
   end
+
 
 
 
