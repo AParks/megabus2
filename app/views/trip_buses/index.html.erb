@@ -38,10 +38,30 @@
           <%= @trip.leaving_from.name %> to <%= @trip.traveling_to.name %>.
         <p>
       <% else %>
+      <p>
+  <b>Number of passengers:</b>
+  <%= @trip.number_of_passengers %>
+</p>
 
-        Leaving From: <%= @trip.leaving_from.name %>
-        <br/>
-        Arriving At: <%= @trip.traveling_to.name %>
+<p>
+  <b>Leaving from:</b>
+  <%= @trip.leaving_from.name %>
+</p>
+
+<p>
+  <b>Traveling to:</b>
+  <%= @trip.traveling_to.name %>
+</p>
+
+<p>
+  <b>Outbound date:</b>
+  <%= @trip.outbound_date %>
+</p>
+
+<p>
+  <b>Return date:</b>
+  <%= @trip.return_date %>
+</p>
 
         <% i = 0%>
         <% @routes.each do |route| %>

@@ -43,6 +43,7 @@ $(function() {
       	slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
         var priceTotals = originalPriceTotals;
+        console.log("priceTotals" + priceTotals);
 
         for (var i = 0; i< priceTotals.length-1;i++){
         	var price = priceTotals[i].getAttribute("value");
@@ -50,7 +51,7 @@ $(function() {
         		priceTotals[i].remove();
         	else if(originalPriceTotals.indexOf(priceTotals[i]) == -1){
         		console.log("-1")
-        		parent.appendChild(priceTotals[i]);
+        		parent.insertBefore(originalPriceTotals[0], priceTotals[i]);
         	}
         }
       }

@@ -1,19 +1,25 @@
-ul.nav li.dropdown:hover ul.dropdown-menu{
+ul.nav li.dropdown:hover ul.dropdown-menu {
     display: block;    
 }
 
-body{
+body {
 		height: 800px;
 
 }
+.route  table:hover { 
+background-color:#3cb9c6;
+color:#fff;
+}
 
-#slider-range{
+
+#slider-range {
 	width: 70%;
 	margin: auto;
 	position: relative;
 	bottom: 10px;
 }
-#amount{
+
+#amount {
 	width: 50%;
 	text-align: center;
 	font-size: 70%;
@@ -24,18 +30,19 @@ body{
 	margin-left: 30px;
 	margin-top: 50px;
 	border-radius: 15px;
-	border-color: #e1f0f0;
+	border-color: #d92432;
 	border-style: solid;
 	border-width: 5px;
 	overflow : auto;
+	background-color: #f5f5f5;
+	color: #000;
 }
 
-.span2, .span10{
+.span2, .span10 {
 	margin: auto;
-	border-color: #e1f0f0;
-	color: #e8d069;
 	margin-bottom: 100px;
-
+	border-color: #d92432;
+	color: #000;
 }
 
 .searchContainer {
@@ -45,7 +52,6 @@ body{
 .resultsContainer {
 	width: 800px;
 	overflow : auto;
-
 }
 
 .row {

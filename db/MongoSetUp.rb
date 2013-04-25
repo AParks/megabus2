@@ -29,7 +29,9 @@ class MongoSetUp
     while (i < count) do
       select = select + "," + selectStatement(i + 1)
       from = from + ", buses b#{i + 1} "
-      where = where + " AND b#{i}.traveling_to_id = b#{i + 1}.leaving_from_id AND b#{i}.arrival_time < b#{i + 1}.leave_time "
+      notSameEdge = "AND b#{i}.leaving_from_id <> b#{i + 1}.traveling_to_id "
+      validTime = "AND b#{i}.arrival_time < b#{i + 1}.leave_time"
+      where = where + " AND b#{i}.traveling_to_id = b#{i + 1}.leaving_from_id " + notSameEdge + validTime
       i+= 1
     end
 
