@@ -41,7 +41,6 @@ require_relative 'MongoSetUp'
 		buses_array = Array.new
 		
 			CSV.foreach 'cities.csv' 	do |row|
-								
 				leave = row[1]
 				for i in 4..(row.length-1)
 					for j in [0, 12]
@@ -85,8 +84,8 @@ require_relative 'MongoSetUp'
 			end
 		end
 	end
-#Bus.destroy_all
-#City.destroy_all
-#loadCities
-#loadBuses
+Bus.destroy_all
+City.destroy_all
+loadCities
+loadBuses
 loadTripsIntoMongo
