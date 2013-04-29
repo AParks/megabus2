@@ -1,3 +1,13 @@
+<script id="my_vars_json" type="text/json">
+    <% @trip["megabusID_orig"] = @trip.leaving_from.megabusID%>
+    <% @trip["megabusID_dest"] = @trip.traveling_to.megabusID%>
+    <%= j @trip.to_json(:except => [ :id, :updated_at, :created_at ]).html_safe %>
+
+
+
+
+</script>
+
 <div class="navbar">
   <div class="navbar-inner">
     <ul class="nav pull-right">
@@ -14,13 +24,6 @@
   </div>
 </div>
 
-</div>
-<ul class="breadcrumb">
-  <li><a href=<%= trips_path %>>Trips</a> <span class="divider">/</span></li>
-  <li><a href=<%= trips_path %>>Trips Details</a> <span class="divider">/</span></li>
-  <li class="active"><a href=<%= trip_buses_path%>>Possible Routes</a></li>
-</ul>
-
   <div class="row-fluid">
     <div class="span2">
       <p>
@@ -31,71 +34,78 @@
     </div>
     <div class="span10">
 
-      
       <% if @routes.empty? %>
+      <% puts @trip.leaving_from %>
         <p> 
           Sorry, there are no routes from 
           <%= @trip.leaving_from.name %> to <%= @trip.traveling_to.name %>.
         <p>
       <% else %>
-      <p>
-  <b>Number of passengers:</b>
-  <%= @trip.number_of_passengers %>
-</p>
 
-<p>
-  <b>Leaving from:</b>
-  <%= @trip.leaving_from.name %>
-</p>
+      You searched for trips leaving <b><%= @trip.leaving_from.name %></b> on <b><%= @trip.outbound_date %></b> to <b><%= @trip.traveling_to.name %></b> for <b><%= @trip.number_of_passengers %> passenger</b>, returning on <b><%= @trip.return_date %></b>.
 
-<p>
-  <b>Traveling to:</b>
-  <%= @trip.traveling_to.name %>
-</p>
 
-<p>
-  <b>Outbound date:</b>
-  <%= @trip.outbound_date %>
-</p>
+        <table class="sortable" border="3" cellpadding="10" cellspacing="10" align='center'>
+          <thead>  
+            <tr>
+              <th title="Press shift for multi-column sorting">Total Price</th>
+              <th> # transfers</th>
+              <th> Duration </th>
+              <th> Total Layover </th>
+              <th> Max layover </th>
+              <th>Itinerary</th>
 
-<p>
-  <b>Return date:</b>
-  <%= @trip.return_date %>
-</p>
+            </tr>
+          </thead>  
+        <tbody>
 
-        <% i = 0%>
-        <% @routes.each do |route| %>
-        <div class="route" id=<%= i%> value=<%= route["price"]%> >
-          <table class="table">  
-            <thead>  
-              <tr>
-                <th>Price</th>
-                <th>Leave time</th>
-                <th>Arrival time</th>
-                <th>Leaving From</th>
-                <th>Arriving At</th>
-              </thead>  
-              
-              <tbody>
-                <% (route["info"]).each do |bus_leg| %>
-                  <tr>         
-                    <td><%= bus_leg["price"] %></td>
-                    <td><%= bus_leg["leave_time"] %></td>
-                    <td><%= bus_leg["arrival_time"] %></td>
-                    <td><%= City.find_by_id(bus_leg["leaving_from_id"]).name %></td>
-                    <td><%= City.find_by_id(bus_leg["traveling_to_id"]).name %></td>
+          <% @routes.each do |route| %>
+            <tr class="route" value=<%= route["price"]%> onclick="window.open(&quot;http://www.tourism.gov.my/&quot;); 
+ window.open(&quot;http://www.tic.kelantan.gov.my/&quot;);">
+              <td> <%= route["price"] %> </td>
+              <td><%= route["info"].length - 1 %> </td>
+              <% 
+              duration_secs = route["info"].last["arrival_time"].to_f - route["info"].first["departure_time"].to_f
+              hours = 0
+              if ( duration_secs >= 3600.0) then
+                hours = duration_secs/(3600.0)
+              end  
+              remaining_secs = duration_secs % 3600.0
+              min = remaining_secs/60
+              %>
+              <td> <%= hours%>h <%= min%> m</td>
+              <td><%= route["info"].length - 1 %> </td>
+              <td><%= route["info"].length - 1 %> </td>
+              <td>
+              <table class="table">  
+                <thead>  
+                  <tr >
+                    <th>Price</th>
+                    <th>Leave time</th>
+                    <th>Arrival time</th>
+                    <th>Leaving From</th>
+                    <th>Arriving At</th>
                   </tr>
-                <% end %>
-                  <tr>
-                    <td>Total:<%= route["price"] %></td> 
-                    <td><%= %></td>
-                  </tr>
-              </tbody>  
-          </table>
-          </div>
-        <% end %>
+                </thead>  
+                  
+                  <tbody>
+                    <% (route["info"]).each do |bus_leg| %>
+                      <tr>         
+                        <td><%= bus_leg["price"] %></td>
+                        <td><%= bus_leg["leave_time"].in_time_zone('Eastern Time (US & Canada)') %></td>
+                        <td><%= bus_leg["arrival_time"].in_time_zone('Eastern Time (US & Canada)') %></td>
+                        <td><%= bus_leg["leaving_from_name"] %></td>
+                        <td><%= bus_leg["traveling_to_name"] %></td>
+                      </tr>
+                    <% end %>
+                      
+                  </tbody>  
+              </table>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+        </table>
       <% end %>
-      <br>
-    </div>
+    </div>  
   </div>
-</div>

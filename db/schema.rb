@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106040039) do
+ActiveRecord::Schema.define(:version => 20130427174201) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -33,16 +33,10 @@ ActiveRecord::Schema.define(:version => 20121106040039) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
-    t.string   "address"
+    t.integer  "megabusID"
+    t.string   "timezone"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "routes", :force => true do |t|
-    t.integer  "city_id"
-    t.integer  "destination_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
   end
 
   create_table "trips", :force => true do |t|

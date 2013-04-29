@@ -5,6 +5,10 @@ class Bus < ActiveRecord::Base
  belongs_to :leaving_from, :class_name => "City"  
  belongs_to :traveling_to, :class_name => "City"
 
-
+	validates :leaving_from, presence: true
+	validates :traveling_to, presence: true
+	validates :arrival_time, presence: true
+	validates :leave_time, presence: true
+	validates :price, presence: true
 
 end

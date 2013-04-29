@@ -1,5 +1,7 @@
 class TripBusesController < ApplicationController
 
+
+
   def index
     @trip = Trip.find(params[:id])
     rowCount = (Bus.all).length

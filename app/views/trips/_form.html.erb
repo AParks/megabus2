@@ -68,11 +68,7 @@
 		</div>
 
 
-	<% if @trip.errors.has_key? :return_date %>
-		<div class="control-group error">
-	<%else	%>
 		<div class="control-group">
-	<% end %>
 			<%= f.label :return_date, class: 'control-label' %>
 			<div class="controls">
 				<%= f.text_field :return_date%>	

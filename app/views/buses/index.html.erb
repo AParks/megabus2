@@ -14,22 +14,22 @@
   </div>
 </div>
 
-<table class="table table-hover ">
+<div class="ACPContainer">
+
+<table class="table table-striped tablesorter-default sortable">
   <thead>  
     <tr>
-      <th>ID</th>
-      <th>Price</th>
-      <th>Leave time</th>
-      <th>Arrival time</th>
-      <th>Leaving From</th>
-      <th>Arriving At</th>
+      <th title="Press shift for multi-column sorting">Price</th>
+      <th title="Press shift for multi-column sorting">Leave time</th>
+      <th title="Press shift for multi-column sorting">Arrival time</th>
+      <th title="Press shift for multi-column sorting">Leaving From</th>
+      <th title="Press shift for multi-column sorting">Arriving At</th>
     </tr>
   </thead>  
 
   <tbody>  
   <% @buses.each do |bus| %>
     <tr>
-      <td><%= bus.id %></td>
       <td><%= bus.price %></td>
       <td><%= bus.leave_time %></td>
       <td><%= bus.arrival_time %></td>
@@ -43,5 +43,4 @@
 
 <br />
 
-
-<div class="ACPContainer">
+</div>

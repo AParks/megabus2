@@ -1,8 +1,9 @@
 class TripsController < ApplicationController
+
   before_filter do
     @cities = City.order('name');
   end
-
+ 
   # GET /trips
   # GET /trips.json
   def index
@@ -19,10 +20,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @trip }
-    end
+          redirect_to :controller => 'trip_buses' , :action => 'index',:id => @trip[:id]
   end
 
   # GET /trips/new

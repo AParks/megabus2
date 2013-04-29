@@ -5,13 +5,8 @@ Railstest::Application.routes.draw do
 
 #  get "sessions/failure"
 
-# resources :buses
-  resources :buses do
-    collection do
-      get 'cheap'
-    end
+  resources :buses 
 
-  end
 
   resources :cities
   resources :trips do

@@ -6,69 +6,87 @@
 require 'csv'
 require_relative 'MongoSetUp'
 
-cities_array = City.all
-Bus.destroy_all
 
-	if (cities_array.empty?) then
-		cities_array = Array.new
-		buses_array = Array.new
-		CSV.foreach('cities.csv') do |row|
-			if (row.length > 2) then
-							puts row[0]
+	def generateTimes j
+		lday = 29
+		ltime = Time.local 2013, 4, lday, j + rand(11), 0
+		ahour = rand 10 + 1 + ltime.hour 
+		
+		if ahour > 23 then
+			ahour = ahour - 24 
+			lday = 30
+		end
+		atime = Time.local 2013, 4, lday, ahour, 0
+		[ltime, atime]		
+	end
+
+	def loadCities
+		if City.all.empty? then
+			cities_array = Array.new
+			buses_array = Array.new
+			CSV.foreach 'cities.csv' do |row|
 				city_hash = Hash.new
-				city_hash[:id] = row[0]
-				city_hash[:address] = row[0]
-				city_hash[:name] = row[1]
+				city_hash[:megabusID] = row[0]
+				city_hash[:id] = row[1]
+				city_hash[:name] = row[2]
+				city_hash[:timezone] = row[3]
 				cities_array.push city_hash
 			end
+			cities = City.create cities_array
 		end
-
-		cities = City.create(cities_array)
 	end
-	if (Bus.all.empty?) then
+
+	def loadBuses
+		if City.all.any? && Bus.all.empty? then
 		buses_array = Array.new
 		
-		CSV.foreach('cities.csv') 	do |row|
-							
-			leave = row[0]
-			for i in 2..(row.length-1)
-				puts "hi"
-				puts row[0]
-				bus_hash = Hash.new
-				begin
-					ltime = Time.utc(2013, 4, 30, rand(23), 0)	
-					atime = Time.utc(2013, 4, 30, rand(23), 0)
-				end until ltime < atime
-				bus_hash[:leave_time] = ltime
-				bus_hash[:arrival_time] = atime
-				price = rand(25)
-				arrive = row[i]
-				bus_hash[:leaving_from] = City.find leave				
-				bus_hash[:traveling_to] = City.find arrive
-				bus_hash[:price] = price
-				buses_array.push bus_hash
+			CSV.foreach 'cities.csv' 	do |row|
+								
+				leave = row[1]
+				for i in 4..(row.length-1)
+					for j in [0, 12]
+						bus_hash = Hash.new
+						times = generateTimes j
+						bus_hash[:leave_time] = times[0]
+						bus_hash[:arrival_time] = times[1]
+						price = 1 + rand(25)
+						
+						arrive = row[i]
+						bus_hash[:leaving_from] = City.find leave				
+						bus_hash[:traveling_to] = City.find arrive
+						bus_hash[:price] = price
+						buses_array.push bus_hash
+					end
+				end
 			end
+		buses = Bus.create buses_array
 		end
-		#buses = BusMong.create(buses_array)
-		buses = Bus.create(buses_array)
 	end
+	
 
-
-	TripMongo.destroy_all
-	cities = ActiveRecord::Base.connection.execute("Select * FROM cities ")
-	cities.each do |start_city|
-		cities.each do |end_city|
-			if (end_city != start_city) then
-				m = MongoSetUp.new(start_city["id"], end_city["id"])
- 				(1..4).each do |i|
-    				@sql_journey_results = m.journeysOfLength i
-    				m.getBusesFromJourneysOfLength i, @sql_journey_results 
-  				end
-  				if (m.routes.any?) then
-					TripMongo.create(:start_city => start_city["id"], :end_city =>end_city["id"], :routes => m.routes )
+	def loadTripsIntoMongo
+		TripMongo.destroy_all
+		cities = City.all
+		puts cities
+		cities.each do |start_city|
+			cities.each do |end_city|
+				puts start_city.name
+				puts end_city.name
+				if (end_city != start_city) then
+					s_id = start_city["megabusID"]
+					e_id = end_city["megabusID"]
+					m = MongoSetUp.new s_id , e_id
+					
+				 	routes = m.getAllRoutes
+				  	if routes.any? then
+						TripMongo.create :start_city => s_id, :end_city => e_id, :routes => routes
+					end
 				end
 			end
 		end
 	end
-
-
+#Bus.destroy_all
+#City.destroy_all
+#loadCities
+#loadBuses
+loadTripsIntoMongo

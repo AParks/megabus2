@@ -14,22 +14,28 @@
   </div>
 </div>
 
+<div class="ACPContainer">
 
-<table class="table table-hover ">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-  </tr>
 
+<table class="table table-striped tablesorter sortable">
+  <thead>
+    <tr>
+      <th title="Press shift for multi-column sorting">Time Zone</th>
+      <th title="Press shift for multi-column sorting">Name</a></th>
+            <th title="Press shift for multi-column sorting">id</a></th>
+    </tr>
+  </thead>
+<tbody>
 <% @cities.each do |city| %>
   <tr>
-        <td><%= city.id %></td>
+    <td><%= city.timezone %></td>
     <td><%= city.name %></td>
+        <td><%= city.id %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
-
-<%= link_to 'New Trip', new_trip_path %>
+</div>
 

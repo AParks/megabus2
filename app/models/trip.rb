@@ -7,7 +7,6 @@ class Trip < ActiveRecord::Base
 
   has_many :buses
   validates_date :outbound_date, :on => :create
-  validates_date :return_date, :on => :create, :on_or_after => :outbound_date
 
   validate :cannot_have_same_start_end
   def cannot_have_same_start_end

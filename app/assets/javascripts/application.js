@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.tablesorter
 //= require jquery_ujs
 //= require jquery-ui
 //= require_tree .
@@ -20,16 +21,62 @@ $(function() {
 
 
 
+
+$('a').tooltip()
+
+//table sorting
+               //     $("table[class=not-sortable]").removeAttr("tablesorter");
+
+    $('table[class*=sortable]').tablesorter({
+            sortReset      : true,
+            sortRestart    : true,
+             headers: { 
+                5: { 
+                    // disable it by setting the property sorter to false 
+                    sorter: false 
+                } 
+            } 
+        }); 
+
+
+
+
+
+//disable the submit button until at least an outbound date has been selected
+    $("input[type=submit]").attr("disabled", "disabled");
+    $("input").change(function(){
+            //Validate your form here, example:
+            var validated = true;
+            if($("#trip_outbound_date").val().length === 0) 
+                validated = false;
+ 
+            //If form is validated enable form
+            if(validated) {
+                console.log("validated")
+                $("input[type=submit]").removeAttr("disabled");
+            }                             
+    })
+
+//datepickers
  	$("#trip_outbound_date").datepicker({ 
  		dateFormat: "yy-mm-dd",
+        onSelect: function(dateText, inst){ 
+            date_min = new Date(dateText +" EDT");
+            $( "#trip_return_date").datepicker( "option", "minDate", date_min);
+            var minDate = $(  "#trip_return_date" ).datepicker( "option", "minDate" );
+            $("input").change();
+        },
  		minDate: 0
  	});
 
 
  	$("#trip_return_date").datepicker({ 
  		dateFormat: "yy-mm-dd",
- 		minDate: 0
+ 		minDate: 0,
  	});
+
+
+    //price filtering
 
     var originalPriceTotals = $(".route");
     var parent = originalPriceTotals[0].parentNode;

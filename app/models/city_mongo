@@ -1,0 +1,10 @@
+class CityMong 
+	include MongoMapper::Document
+
+	set_collection_name "cities"
+
+    key :name, string
+    key :timezone, string
+    key :megabusID, Integer
+
+end
