@@ -65,7 +65,7 @@
               <td> <%= route["price"] %> </td>
               <td><%= route["info"].length - 1 %> </td>
               <% 
-              duration_secs = route["info"].last["arrival_time"].to_f - route["info"].first["departure_time"].to_f
+              duration_secs = route["info"].last["arrival_time"].to_f - route["info"].first["leave_time"].to_f
               hours = 0
               if ( duration_secs >= 3600.0) then
                 hours = duration_secs/(3600.0)
@@ -75,7 +75,7 @@
               %>
               <td> <%= hours%>h <%= min%> m</td>
               <td><%= route["info"].length - 1 %> </td>
-              <td><%= route["info"].length - 1 %> </td>
+              <td><%= route["max_layover"] %> </td>
               <td>
               <table class="table">  
                 <thead>  
@@ -92,8 +92,10 @@
                     <% (route["info"]).each do |bus_leg| %>
                       <tr>         
                         <td><%= bus_leg["price"] %></td>
-                        <td><%= bus_leg["leave_time"].in_time_zone('Eastern Time (US & Canada)') %></td>
-                        <td><%= bus_leg["arrival_time"].in_time_zone('Eastern Time (US & Canada)') %></td>
+                        <% lz = bus_leg["leaving_from_timezone"]%>
+                        <% az = bus_leg["traveling_to_timezone"]%>
+                        <td><%= bus_leg["leave_time"].in_time_zone(lz).strftime("%a %b %e %Y %H:%M %p %Z ") %></td>
+                        <td><%= bus_leg["arrival_time"].in_time_zone(az).strftime("%a %b %e %Y %H:%M %p %Z ") %></td>
                         <td><%= bus_leg["leaving_from_name"] %></td>
                         <td><%= bus_leg["traveling_to_name"] %></td>
                       </tr>

@@ -9,14 +9,14 @@ require_relative 'MongoSetUp'
 
 	def generateTimes j
 		lday = 29
-		ltime = Time.local 2013, 4, lday, j + rand(11), 0
+		ltime = DateTime.new(2013, 4, lday, j + rand(11), 0).utc
 		ahour = rand 10 + 1 + ltime.hour 
 		
 		if ahour > 23 then
 			ahour = ahour - 24 
 			lday = 30
 		end
-		atime = Time.local 2013, 4, lday, ahour, 0
+		atime = Time.new(2013, 4, lday, ahour, 0).utc
 		[ltime, atime]		
 	end
 
@@ -66,11 +66,8 @@ require_relative 'MongoSetUp'
 	def loadTripsIntoMongo
 		TripMongo.destroy_all
 		cities = City.all
-		puts cities
 		cities.each do |start_city|
 			cities.each do |end_city|
-				puts start_city.name
-				puts end_city.name
 				if (end_city != start_city) then
 					s_id = start_city["megabusID"]
 					e_id = end_city["megabusID"]
@@ -78,14 +75,15 @@ require_relative 'MongoSetUp'
 					
 				 	routes = m.getAllRoutes
 				  	if routes.any? then
+				  		puts routes
 						TripMongo.create :start_city => s_id, :end_city => e_id, :routes => routes
 					end
 				end
 			end
 		end
 	end
-Bus.destroy_all
 City.destroy_all
 loadCities
+Bus.destroy_all
 loadBuses
-loadTripsIntoMongo
+#loadTripsIntoMongo

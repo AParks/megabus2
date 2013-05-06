@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130427174201) do
+ActiveRecord::Schema.define(:version => 20130429205159) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -22,13 +22,11 @@ ActiveRecord::Schema.define(:version => 20130427174201) do
   end
 
   create_table "buses", :force => true do |t|
-    t.decimal "price"
-    t.time    "leave_time"
-    t.time    "arrival_time"
-    t.integer "leaving_from_id"
-    t.integer "traveling_to_id"
-    t.integer "cities_id"
-    t.integer "trips_id"
+    t.decimal  "price"
+    t.datetime "leave_time"
+    t.datetime "arrival_time"
+    t.integer  "leaving_from_id"
+    t.integer  "traveling_to_id"
   end
 
   create_table "cities", :force => true do |t|

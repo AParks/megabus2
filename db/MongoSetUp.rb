@@ -4,12 +4,13 @@ class MongoSetUp
     @start_city = start_city
     @end_city = end_city
     @routes = Array.new
-    min_layover = 0
+    @max_layover = 0
+    @total_layover = 0
   end
 
 
   def getAllRoutes
-    (1..3).each do |i|
+    (1..4).each do |i|
       sql_journey_results = journeysOfLength i
       getBusesFromJourneysOfLength i, sql_journey_results
     end
@@ -20,10 +21,7 @@ class MongoSetUp
   def selectStatement i
     select = " b#{i}.id AS b#{i}id, " + 
             "b#{i}.leaving_from_id AS b#{i}leaving_from, " + 
-            "b#{i}.traveling_to_id AS b#{i}traveling_to, " +
-            "b#{i}.leave_time AS b#{i}leave_time, " +
-            "b#{i}.arrival_time AS b#{i}arrival_time, " + 
-            "b#{i}.price AS b#{i}price " 
+            "b#{i}.traveling_to_id AS b#{i}traveling_to " 
   end
 
 #find journeys of length i
@@ -33,20 +31,18 @@ class MongoSetUp
     where = " where b1.leaving_from_id='#{@start_city}' "
     i = 1
     while i < count do
-      puts i
       select = select + "," + selectStatement(i + 1)
       from = from + ", buses b#{i + 1} "
 
       # validTime was left out for practical purposes
-      #validTime = "AND b#{i}.arrival_time < b#{i + 1}.leave_time "
+      validTime = " AND b#{i}.arrival_time < b#{i + 1}.leave_time "
       incidentEdges = " AND b#{i}.traveling_to_id = b#{i + 1}.leaving_from_id "
       notSameEdge = "AND b#{i}.leaving_from_id <> b#{i + 1}.traveling_to_id "
-      where = where + incidentEdges + notSameEdge
+      where = where + incidentEdges + notSameEdge + validTime
       i+= 1
     end
     where = where + " AND b#{i}.traveling_to_id='#{@end_city}'"
-    sql = select.chomp ',' + from.chomp(',') + where.chomp('AND')
-    puts sql
+    sql = select.chomp(',') + from.chomp(',') + where.chomp('AND')
 
     ActiveRecord::Base.connection.execute sql 
 
@@ -58,6 +54,7 @@ class MongoSetUp
 #the corresponding Bus objects, and save them to an array 
   def getBusesFromJourneysOfLength count, sql_journey_results 
   
+  puts sql_journey_results
   #each result has a journey with count bus legs, and thus count bus IDs
     sql_journey_results.each do |result| 
       route = Hash.new
@@ -70,41 +67,63 @@ class MongoSetUp
       count.times do |i|
         bus_prev = Bus.find_by_id result["b#{i}id"] 
         bus = Bus.find_by_id result["b#{i+1}id"]
-        calculateLayover bus_prev, bus
-        busmong = bus.as_json
-
-        busmong["leaving_from_name"] = bus.leaving_from.name
-        busmong["traveling_to_name"] = bus.traveling_to.name
-        busmong["price"] = busmong["price"].to_i
+        
+        calculateLayover bus_prev, bus unless i<=0
+        busmong = convertToBusMong(bus)
         route["price"] += busmong["price"]
-        buses.push bus #array of buses
-        busmong_array.push busmong #add previous array to array of all buses
+        busmong_array.push  busmong#add previous array to array of all buses
       end
 
-      route["min_layover"] = convertMinLayover
+      route["max_layover"] = convertLayover @max_layover
+      route["total_layover"] = convertLayover @total_layover
       route["info"].push *busmong_array #each journey has an array of buses
       @routes.push route
 
     end
   end
 
-  def convertMinLayover
-    hours = 0
-    if min_layover >= 3600.0 then
-      hours = min_layover/3600.0
-    end
-    remaining_secs = min_layover % 3600.0
+  def convertToBusMong bus
+        busmong = bus.as_json  :except => [ :id, :leave_time, :arrival_time]
+        busmong["leaving_from_name"] = bus.leaving_from.name
+        busmong["leaving_from_time_zone"] = bus.leaving_from.timezone
+        busmong["traveling_to_name"] = bus.traveling_to.name
+        busmong["traveling_to_time_zone"] = bus.traveling_to.timezone
+        busmong["leave_time"] = bus.leave_time.utc
+        busmong["arrival_time"] = bus.arrival_time.utc
+        busmong["price"] = busmong["price"].to_i
+
+        busmong
+  end
+
+
+
+
+
+
+  def convertLayover layover
+    
+    hours = layover/3600
+    
+    remaining_secs = layover % 3600
     minutes = remaining_secs/60
-    hours + "h " + minutes + "min"
+    hours.to_s + "h " + minutes.to_s + "min"
   end
 
   def calculateLayover bus_prev, bus
-      a_secs = bus_prev.traveling_to.arrival_time.to_f
-      d_secs = bus.leaving_from.departure_time.to_f
-      layover = d_secs - a_secs
-      if layouver < min_layover then
-        min_layover = layover
+      puts bus_prev.arrival_time
+      puts bus.leave_time
+      a_secs = bus_prev.arrival_time.to_f
+      l_secs = bus.leave_time.to_f
+      layover = l_secs - a_secs
+
+      puts "layover"
+      puts (layover/3600).to_s + "h"
+      puts (layover % 3600)/60
+
+      if layover > @max_layover then
+        @max_layover = layover
       end
+      @total_layover += layover 
 
   end
 

@@ -31,8 +31,8 @@
   <% @buses.each do |bus| %>
     <tr>
       <td><%= bus.price %></td>
-      <td><%= bus.leave_time %></td>
-      <td><%= bus.arrival_time %></td>
+      <td><%= bus.leave_time.strftime("%a %b %e %Y %H:%M %p %Z ") %></td>
+      <td><%= bus.arrival_time.strftime("%a %b %e %Y %H:%M %p %Z ") %></td>
     	<td><%= bus.leaving_from.name %></td>
       <td><%= bus.traveling_to.name%></td>
     </tr>
