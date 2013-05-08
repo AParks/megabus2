@@ -10,13 +10,22 @@ require_relative 'MongoSetUp'
 	def generateTimes j
 		lday = 29
 		ltime = DateTime.new(2013, 4, lday, j + rand(11), 0).utc
-		ahour = rand 10 + 1 + ltime.hour 
+		ahour = rand(10) + 1 + ltime.hour 
 		
+		puts "ahour before : #{ahour}"
 		if ahour > 23 then
 			ahour = ahour - 24 
 			lday = 30
 		end
-		atime = Time.new(2013, 4, lday, ahour, 0).utc
+		puts "ahour after : #{ahour}"
+		atime = DateTime.new(2013, 4, lday, ahour, 0).utc
+		if atime.to_i < ltime.to_i then
+			puts "ahour: #{ahour}"
+			puts "lday: #{lday}"
+			puts ltime
+			puts atime
+		end
+
 		[ltime, atime]		
 	end
 
@@ -32,7 +41,7 @@ require_relative 'MongoSetUp'
 				city_hash[:timezone] = row[3]
 				cities_array.push city_hash
 			end
-			cities = City.create cities_array
+			cities = City.create! cities_array
 		end
 	end
 
@@ -58,7 +67,9 @@ require_relative 'MongoSetUp'
 					end
 				end
 			end
+		#buses = Bus.create! buses_array
 		buses = Bus.create buses_array
+		
 		end
 	end
 	
@@ -82,8 +93,8 @@ require_relative 'MongoSetUp'
 			end
 		end
 	end
-City.destroy_all
-loadCities
-Bus.destroy_all
-loadBuses
-#loadTripsIntoMongo
+#City.destroy_all
+#loadCities
+#Bus.destroy_all
+#loadBuses
+loadTripsIntoMongo

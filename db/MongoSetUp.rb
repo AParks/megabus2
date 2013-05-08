@@ -84,10 +84,9 @@ class MongoSetUp
 
   def convertToBusMong bus
         busmong = bus.as_json  :except => [ :id, :leave_time, :arrival_time]
-        busmong["leaving_from_name"] = bus.leaving_from.name
-        busmong["leaving_from_time_zone"] = bus.leaving_from.timezone
-        busmong["traveling_to_name"] = bus.traveling_to.name
-        busmong["traveling_to_time_zone"] = bus.traveling_to.timezone
+
+        busmong = cityInfo busmong, "leaving_from", bus.leaving_from
+        busmong = cityInfo busmong, "traveling_to", bus.traveling_to
         busmong["leave_time"] = bus.leave_time.utc
         busmong["arrival_time"] = bus.arrival_time.utc
         busmong["price"] = busmong["price"].to_i
@@ -97,6 +96,12 @@ class MongoSetUp
 
 
 
+  def cityInfo busmong, city_type, city
+    busmong[city_type + "_name"] = city.name
+    busmong[city_type + "_id"] = city.megabusID
+    busmong[city_type + "_time_zone"] = city.timezone
+    busmong
+  end
 
 
 

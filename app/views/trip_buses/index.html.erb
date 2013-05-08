@@ -1,12 +1,4 @@
-<script id="my_vars_json" type="text/json">
-    <% @trip["megabusID_orig"] = @trip.leaving_from.megabusID%>
-    <% @trip["megabusID_dest"] = @trip.traveling_to.megabusID%>
-    <%= j @trip.to_json(:except => [ :id, :updated_at, :created_at ]).html_safe %>
 
-
-
-
-</script>
 
 <div class="navbar">
   <div class="navbar-inner">
@@ -60,8 +52,7 @@
         <tbody>
 
           <% @routes.each do |route| %>
-            <tr class="route" value=<%= route["price"]%> onclick="window.open(&quot;http://www.tourism.gov.my/&quot;); 
- window.open(&quot;http://www.tic.kelantan.gov.my/&quot;);">
+            <tr class="route" value=<%= route["price"]%> >
               <td> <%= route["price"] %> </td>
               <td><%= route["info"].length - 1 %> </td>
               <% 
@@ -90,6 +81,9 @@
                   
                   <tbody>
                     <% (route["info"]).each do |bus_leg| %>
+                    <script class="trip_json" id="trip_json" type="application/json">
+                      <%= j bus_leg.to_json.html_safe %>
+                    </script>
                       <tr>         
                         <td><%= bus_leg["price"] %></td>
                         <% lz = bus_leg["leaving_from_timezone"]%>

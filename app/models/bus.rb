@@ -9,6 +9,8 @@ class Bus < ActiveRecord::Base
 	validates :traveling_to, presence: true
 	validates :arrival_time, presence: true
 	validates :leave_time, presence: true
+	validates_time :leave_time, :before => :arrival_time
 	validates :price, presence: true
+
 
 end
