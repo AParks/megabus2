@@ -12,13 +12,16 @@ require_relative 'MongoSetUp'
 		ltime = DateTime.new(2013, 4, lday, j + rand(11), 0).utc
 		ahour = rand(10) + 1 + ltime.hour 
 		
-		puts "ahour before : #{ahour}"
+		#puts "ahour before : #{ahour}"
 		if ahour > 23 then
 			ahour = ahour - 24 
 			lday = 30
 		end
-		puts "ahour after : #{ahour}"
+		#puts "ahour after : #{ahour}"
 		atime = DateTime.new(2013, 4, lday, ahour, 0).utc
+		puts "to_i"
+		puts atime.to_i
+		puts ltime.to_i
 		if atime.to_i < ltime.to_i then
 			puts "ahour: #{ahour}"
 			puts "lday: #{lday}"
@@ -67,8 +70,8 @@ require_relative 'MongoSetUp'
 					end
 				end
 			end
-		#buses = Bus.create! buses_array
-		buses = Bus.create buses_array
+		buses = Bus.create! buses_array
+		#buses = Bus.create buses_array
 		
 		end
 	end
@@ -97,4 +100,4 @@ require_relative 'MongoSetUp'
 #loadCities
 #Bus.destroy_all
 #loadBuses
-loadTripsIntoMongo
+#loadTripsIntoMongo
