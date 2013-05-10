@@ -100,4 +100,4 @@ require_relative 'MongoSetUp'
 #loadCities
 #Bus.destroy_all
 #loadBuses
-#loadTripsIntoMongo
+loadTripsIntoMongo
