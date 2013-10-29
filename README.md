@@ -1,2 +1,1 @@
-megabus2
-MegaBus (without Neo4j)
+https://megabus.herokuapp.com/
